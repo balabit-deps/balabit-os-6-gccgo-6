@@ -1,0 +1,4 @@
+gccgo-6 source: invalid-arch-string-in-source-relation
+gccgo-6 source: quilt-build-dep-but-no-series-file
+# lintian can't handle (>= ${gcc:Version})
+gccgo-6 source: weak-library-dev-dependency

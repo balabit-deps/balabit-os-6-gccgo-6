@@ -1,0 +1,371 @@
+Source: gccgo-6
+Section: devel
+Priority: optional
+Maintainer: Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Uploaders: Matthias Klose <doko@debian.org>
+Standards-Version: 3.9.7
+Build-Depends: debhelper (>= 5.0.62), dpkg-dev (>= 1.17.11), 
+  g++-multilib [amd64 armel armhf i386 kfreebsd-amd64 mips mips64 mips64el mipsel mipsn32 mipsn32el powerpc ppc64 s390 s390x sparc sparc64 x32] <!cross>, g++-5 [arm64] <!cross>, 
+  libc6.1-dev (>= 2.13-0ubuntu6) [alpha ia64] | libc0.3-dev (>= 2.13-0ubuntu6) [hurd-i386] | libc0.1-dev (>= 2.13-0ubuntu6) [kfreebsd-i386 kfreebsd-amd64] | libc6-dev (>= 2.13-0ubuntu6), libc6-dev (>= 2.13-31) [armel armhf], libc6-dev-amd64 [i386 x32], libc6-dev-sparc64 [sparc], libc6-dev-sparc [sparc64], libc6-dev-s390 [s390x], libc6-dev-s390x [s390], libc6-dev-i386 [amd64 x32], libc6-dev-powerpc [ppc64], libc6-dev-ppc64 [powerpc], libc0.1-dev-i386 [kfreebsd-amd64], lib32gcc1 [amd64 ppc64 kfreebsd-amd64 mipsn32 mipsn32el mips64 mips64el s390x sparc64 x32], libn32gcc1 [mips mipsel mips64 mips64el], lib64gcc1 [i386 mips mipsel mipsn32 mipsn32el powerpc sparc s390 x32], libc6-dev-mips64 [mips mipsel mipsn32 mipsn32el], libc6-dev-mipsn32 [mips mipsel mips64 mips64el], libc6-dev-mips32 [mipsn32 mipsn32el mips64 mips64el], libc6-dev-x32 [amd64 i386], libx32gcc1 [amd64 i386], libc6-dev-armhf [armel], libhfgcc1 [armel], libc6-dev-armel [armhf], libsfgcc1 [armhf], libc6.1-dbg [alpha ia64] | libc0.3-dbg [hurd-i386] | libc0.1-dbg [kfreebsd-i386 kfreebsd-amd64] | libc6-dbg, 
+  kfreebsd-kernel-headers (>= 0.84) [kfreebsd-any], linux-libc-dev [m68k], 
+  m4, libtool, autoconf2.64, 
+  libunwind7-dev (>= 0.98.5-6) [ia64], libatomic-ops-dev [ia64], 
+  autogen, gawk, lzma, xz-utils, patchutils, 
+  zlib1g-dev, systemtap-sdt-dev [linux-any kfreebsd-any hurd-any], 
+  binutils:native (>= 2.25.90) | binutils-multiarch:native (>= 2.25.90), 
+  gperf (>= 3.0.1), bison (>= 1:2.3), flex, gettext, 
+  gdb:native, 
+  texinfo (>= 4.3), locales, sharutils, 
+  procps, netbase, 
+  libisl-dev, libmpc-dev (>= 1.0), libmpfr-dev (>= 3.0.0-9~), libgmp-dev (>= 2:5.0.1~), 
+  dejagnu [!m68k], realpath (>= 1.9.12), chrpath, lsb-release, quilt, 
+   g++-6-alpha-linux-gnu [alpha] <cross>, gobjc-6-alpha-linux-gnu [alpha] <cross>, gfortran-6-alpha-linux-gnu [alpha] <cross>, gcj-6-alpha-linux-gnu [alpha] <cross>, gdc-6-alpha-linux-gnu [alpha] <cross>, gccgo-6-alpha-linux-gnu [alpha] <cross>, gnat-6-alpha-linux-gnu [alpha] <cross>, g++-6-x86-64-linux-gnu [amd64] <cross>, gobjc-6-x86-64-linux-gnu [amd64] <cross>, gfortran-6-x86-64-linux-gnu [amd64] <cross>, gcj-6-x86-64-linux-gnu [amd64] <cross>, gdc-6-x86-64-linux-gnu [amd64] <cross>, gccgo-6-x86-64-linux-gnu [amd64] <cross>, gnat-6-x86-64-linux-gnu [amd64] <cross>, g++-6-arm-linux-gnueabi [armel] <cross>, gobjc-6-arm-linux-gnueabi [armel] <cross>, gfortran-6-arm-linux-gnueabi [armel] <cross>, gcj-6-arm-linux-gnueabi [armel] <cross>, gdc-6-arm-linux-gnueabi [armel] <cross>, gccgo-6-arm-linux-gnueabi [armel] <cross>, gnat-6-arm-linux-gnueabi [armel] <cross>, g++-6-arm-linux-gnueabihf [armhf] <cross>, gobjc-6-arm-linux-gnueabihf [armhf] <cross>, gfortran-6-arm-linux-gnueabihf [armhf] <cross>, gcj-6-arm-linux-gnueabihf [armhf] <cross>, gdc-6-arm-linux-gnueabihf [armhf] <cross>, gccgo-6-arm-linux-gnueabihf [armhf] <cross>, gnat-6-arm-linux-gnueabihf [armhf] <cross>, g++-6-aarch64-linux-gnu [arm64] <cross>, gobjc-6-aarch64-linux-gnu [arm64] <cross>, gfortran-6-aarch64-linux-gnu [arm64] <cross>, gcj-6-aarch64-linux-gnu [arm64] <cross>, gdc-6-aarch64-linux-gnu [arm64] <cross>, gccgo-6-aarch64-linux-gnu [arm64] <cross>, gnat-6-aarch64-linux-gnu [arm64] <cross>, g++-6-i686-linux-gnu [i386] <cross>, gobjc-6-i686-linux-gnu [i386] <cross>, gfortran-6-i686-linux-gnu [i386] <cross>, gcj-6-i686-linux-gnu [i386] <cross>, gdc-6-i686-linux-gnu [i386] <cross>, gccgo-6-i686-linux-gnu [i386] <cross>, gnat-6-i686-linux-gnu [i386] <cross>, g++-6-mips-linux-gnu [mips] <cross>, gobjc-6-mips-linux-gnu [mips] <cross>, gfortran-6-mips-linux-gnu [mips] <cross>, gcj-6-mips-linux-gnu [mips] <cross>, gdc-6-mips-linux-gnu [mips] <cross>, gccgo-6-mips-linux-gnu [mips] <cross>, gnat-6-mips-linux-gnu [mips] <cross>, g++-6-mipsel-linux-gnu [mipsel] <cross>, gobjc-6-mipsel-linux-gnu [mipsel] <cross>, gfortran-6-mipsel-linux-gnu [mipsel] <cross>, gcj-6-mipsel-linux-gnu [mipsel] <cross>, gdc-6-mipsel-linux-gnu [mipsel] <cross>, gccgo-6-mipsel-linux-gnu [mipsel] <cross>, gnat-6-mipsel-linux-gnu [mipsel] <cross>, g++-6-mips64-linux-gnuabi64 [mips64] <cross>, gobjc-6-mips64-linux-gnuabi64 [mips64] <cross>, gfortran-6-mips64-linux-gnuabi64 [mips64] <cross>, gcj-6-mips64-linux-gnuabi64 [mips64] <cross>, gdc-6-mips64-linux-gnuabi64 [mips64] <cross>, gccgo-6-mips64-linux-gnuabi64 [mips64] <cross>, g++-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gobjc-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gfortran-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gcj-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gdc-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gccgo-6-mips64el-linux-gnuabi64 [mips64el] <cross>, gnat-6-mips64el-linux-gnuabi64 [mips64el] <cross>, g++-6-powerpc-linux-gnu [powerpc] <cross>, gobjc-6-powerpc-linux-gnu [powerpc] <cross>, gfortran-6-powerpc-linux-gnu [powerpc] <cross>, gcj-6-powerpc-linux-gnu [powerpc] <cross>, gdc-6-powerpc-linux-gnu [powerpc] <cross>, gccgo-6-powerpc-linux-gnu [powerpc] <cross>, gnat-6-powerpc-linux-gnu [powerpc] <cross>, g++-6-powerpc64-linux-gnu [ppc64] <cross>, gobjc-6-powerpc64-linux-gnu [ppc64] <cross>, gfortran-6-powerpc64-linux-gnu [ppc64] <cross>, gcj-6-powerpc64-linux-gnu [ppc64] <cross>, gdc-6-powerpc64-linux-gnu [ppc64] <cross>, gccgo-6-powerpc64-linux-gnu [ppc64] <cross>, gnat-6-powerpc64-linux-gnu [ppc64] <cross>, g++-6-powerpc64le-linux-gnu [ppc64el] <cross>, gobjc-6-powerpc64le-linux-gnu [ppc64el] <cross>, gfortran-6-powerpc64le-linux-gnu [ppc64el] <cross>, gcj-6-powerpc64le-linux-gnu [ppc64el] <cross>, gdc-6-powerpc64le-linux-gnu [ppc64el] <cross>, gccgo-6-powerpc64le-linux-gnu [ppc64el] <cross>, gnat-6-powerpc64le-linux-gnu [ppc64el] <cross>, g++-6-m68k-linux-gnu [m68k] <cross>, gobjc-6-m68k-linux-gnu [m68k] <cross>, gfortran-6-m68k-linux-gnu [m68k] <cross>, gcj-6-m68k-linux-gnu [m68k] <cross>, gdc-6-m68k-linux-gnu [m68k] <cross>, g++-6-sh4-linux-gnu [sh4] <cross>, gobjc-6-sh4-linux-gnu [sh4] <cross>, gfortran-6-sh4-linux-gnu [sh4] <cross>, gcj-6-sh4-linux-gnu [sh4] <cross>, g++-6-sparc64-linux-gnu [sparc64] <cross>, gobjc-6-sparc64-linux-gnu [sparc64] <cross>, gfortran-6-sparc64-linux-gnu [sparc64] <cross>, gcj-6-sparc64-linux-gnu [sparc64] <cross>, gdc-6-sparc64-linux-gnu [sparc64] <cross>, gccgo-6-sparc64-linux-gnu [sparc64] <cross>, g++-6-s390x-linux-gnu [s390x] <cross>, gobjc-6-s390x-linux-gnu [s390x] <cross>, gfortran-6-s390x-linux-gnu [s390x] <cross>, gcj-6-s390x-linux-gnu [s390x] <cross>, gdc-6-s390x-linux-gnu [s390x] <cross>, gccgo-6-s390x-linux-gnu [s390x] <cross>, gnat-6-s390x-linux-gnu [s390x] <cross>, g++-6-x86-64-linux-gnux32 [x32] <cross>, gobjc-6-x86-64-linux-gnux32 [x32] <cross>, gfortran-6-x86-64-linux-gnux32 [x32] <cross>, gcj-6-x86-64-linux-gnux32 [x32] <cross>, gdc-6-x86-64-linux-gnux32 [x32] <cross>, gccgo-6-x86-64-linux-gnux32 [x32] <cross>, 
+Build-Depends-Indep:  
+Homepage: http://gcc.gnu.org/
+Vcs-Browser: http://svn.debian.org/viewsvn/gcccvs/branches/sid/gcc-6/
+Vcs-Svn: svn://anonscm.debian.org/gcccvs/branches/sid/gcc-6
+
+Package: gcc-6-base
+Architecture: any
+Multi-Arch: same
+Section: libs
+Priority: required
+Depends: ${misc:Depends}
+Replaces: ${base:Replaces}
+Breaks: ${base:Breaks}
+Description: GCC, the GNU Compiler Collection (base package)
+ This package contains files common to all languages and libraries
+ contained in the GNU Compiler Collection (GCC).
+
+Package: libgcc1
+Architecture: any
+Section: libs
+Priority: required
+Depends: gcc-6-base (= ${gcc:Version}), ${shlibs:Depends}, ${misc:Depends}
+Provides: libgcc1-armel [armel], libgcc1-armhf [armhf]
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Breaks: ${multiarch:breaks}
+Description: GCC support library
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libgcc1-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libgcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Provides: libgcc1-dbg-armel [armel], libgcc1-dbg-armhf [armhf]
+Multi-Arch: same
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libgcc2
+Architecture: m68k
+Section: libs
+Priority: required
+Depends: gcc-6-base (= ${gcc:Version}), ${shlibs:Depends}, ${misc:Depends}
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Breaks: ${multiarch:breaks}
+Description: GCC support library
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libgcc2-dbg
+Architecture: m68k
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libgcc2 (= ${gcc:EpochVersion}), ${misc:Depends}
+Multi-Arch: same
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libgcc4
+Architecture: hppa
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Breaks: ${multiarch:breaks}
+Section: libs
+Priority: required
+Depends: gcc-6-base (= ${gcc:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: GCC support library
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libgcc4-dbg
+Architecture: hppa
+Multi-Arch: same
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libgcc4 (= ${gcc:EpochVersion}), ${misc:Depends}
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: lib64gcc1
+Architecture: i386 powerpc sparc s390 mips mipsel mipsn32 mipsn32el x32
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Conflicts: libgcc1 (<= 1:3.3-0pre9)
+Description: GCC support library (64bit)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: lib64gcc1-dbg
+Architecture: i386 powerpc sparc s390 mips mipsel mipsn32 mipsn32el x32
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), lib64gcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: lib32gcc1
+Architecture: amd64 ppc64 kfreebsd-amd64 s390x sparc64 x32 mipsn32 mipsn32el mips64 mips64el
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Conflicts: ${confl:lib32}
+Description: GCC support library (32 bit Version)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: lib32gcc1-dbg
+Architecture: amd64 ppc64 kfreebsd-amd64 s390x sparc64 x32 mipsn32 mipsn32el mips64 mips64el
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), lib32gcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libhfgcc1
+Architecture: armel
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Conflicts: libgcc1-armhf [armel]
+Description: GCC support library (hard float ABI)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libhfgcc1-dbg
+Architecture: armel
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libhfgcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Conflicts: libgcc1-dbg-armhf [armel]
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libsfgcc1
+Architecture: armhf
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Conflicts: libgcc1-armel [armhf]
+Description: GCC support library (soft float ABI)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libsfgcc1-dbg
+Architecture: armhf
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libsfgcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Conflicts: libgcc1-dbg-armel [armhf]
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libn32gcc1
+Architecture: mips mipsel mips64 mips64el
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Conflicts: libgcc1 (<= 1:3.3-0pre9)
+Description: GCC support library (n32)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libn32gcc1-dbg
+Architecture: mips mipsel mips64 mips64el
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libn32gcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: libx32gcc1
+Architecture: amd64 i386
+Section: libs
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${misc:Depends}
+Description: GCC support library (x32)
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+
+Package: libx32gcc1-dbg
+Architecture: amd64 i386
+Section: debug
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libx32gcc1 (= ${gcc:EpochVersion}), ${misc:Depends}
+Description: GCC support library (debug symbols)
+ Debug symbols for the GCC support library.
+
+Package: gccgo-6
+Architecture: any
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcc1}, libgo9 (>= ${gcc:Version}), ${dep:libcdev}, ${shlibs:Depends}, ${misc:Depends}
+Provides: go-compiler
+Suggests: ${go:multilib}, gccgo-6-doc, libgo9-dbg (>= ${gcc:Version})
+Conflicts: ${golang:Conflicts}
+Description: GNU Go compiler
+ This is the GNU Go compiler, which compiles Go on platforms supported
+ by the gcc compiler. It uses the gcc backend to generate optimized code.
+
+Package: gccgo-6-multilib
+Architecture: amd64 armel armhf i386 kfreebsd-amd64 mips mips64 mips64el mipsel mipsn32 mipsn32el powerpc ppc64 s390 s390x sparc sparc64 x32
+Section: devel
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), gccgo-6 (= ${gcc:Version}), ${dep:libgobiarch}, ${shlibs:Depends}, ${misc:Depends}
+Suggests: ${dep:libgobiarchdbg}
+Description: GNU Go compiler (multilib support)
+ This is the GNU Go compiler, which compiles Go on platforms supported
+ by the gcc compiler.
+ .
+ This is a dependency package, depending on development packages
+ for the non-default multilib architecture(s).
+
+Package: gccgo-6-doc
+Architecture: all
+Section: doc
+Priority: optional
+Depends: gcc-6-base (>= ${gcc:SoftVersion}), dpkg (>= 1.15.4) | install-info, ${misc:Depends}
+Description: Documentation for the GNU Go compiler (gccgo)
+ Documentation for the GNU Go compiler in info format.
+
+Package: libgo9
+Section: libs
+Architecture: any
+Provides: libgo9-armel [armel], libgo9-armhf [armhf]
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${shlibs:Depends}, ${misc:Depends}
+Replaces: libgo3, libgo8
+Description: Runtime library for GNU Go applications
+ Library needed for GNU Go applications linked against the
+ shared library.
+
+Package: libgo9-dbg
+Section: debug
+Architecture: any
+Provides: libgo9-dbg-armel [armel], libgo9-dbg-armhf [armhf]
+Multi-Arch: same
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libgo9 (= ${gcc:Version}), ${misc:Depends}
+Description: Runtime library for GNU Go applications (debug symbols)
+ Library needed for GNU Go applications linked against the
+ shared library. This currently is an empty package, because the
+ library is completely unstripped.
+
+Package: lib64go9
+Section: libs
+Architecture: i386 powerpc sparc s390 mips mipsel mipsn32 mipsn32el x32
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}, ${misc:Depends}
+Replaces: lib64go3, lib64go8
+Description: Runtime library for GNU Go applications (64bit)
+ Library needed for GNU Go applications linked against the
+ shared library.
+
+Package: lib64go9-dbg
+Section: debug
+Architecture: i386 powerpc sparc s390 mips mipsel mipsn32 mipsn32el x32
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), lib64go9 (= ${gcc:Version}), ${misc:Depends}
+Description: Runtime library for GNU Go applications (64bit debug symbols)
+ Library needed for GNU Go applications linked against the
+ shared library. This currently is an empty package, because the
+ library is completely unstripped.
+
+Package: lib32go9
+Section: libs
+Architecture: amd64 ppc64 kfreebsd-amd64 s390x sparc64 x32 mipsn32 mipsn32el mips64 mips64el
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}, ${misc:Depends}
+Conflicts: ${confl:lib32}
+Replaces: lib32go3, lib32go8
+Description: Runtime library for GNU Go applications (32bit)
+ Library needed for GNU Go applications linked against the
+ shared library.
+
+Package: lib32go9-dbg
+Section: debug
+Architecture: amd64 ppc64 kfreebsd-amd64 s390x sparc64 x32 mipsn32 mipsn32el mips64 mips64el
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), lib32go9 (= ${gcc:Version}), ${misc:Depends}
+Description: Runtime library for GNU Go applications (32 bit debug symbols)
+ Library needed for GNU Go applications linked against the
+ shared library. This currently is an empty package, because the
+ library is completely unstripped.
+
+Package: libn32go9
+Section: libs
+Architecture: mips mipsel mips64 mips64el
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}, ${misc:Depends}
+Replaces: libn32go3, libn32go8
+Description: Runtime library for GNU Go applications (n32)
+ Library needed for GNU Go applications linked against the
+ shared library.
+
+Package: libn32go9-dbg
+Section: debug
+Architecture: mips mipsel mips64 mips64el
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libn32go9 (= ${gcc:Version}), ${misc:Depends}
+Description: Runtime library for GNU Go applications (n32 debug symbols)
+ Library needed for GNU Go applications linked against the
+ shared library. This currently is an empty package, because the
+ library is completely unstripped.
+
+Package: libx32go9
+Section: libs
+Architecture: amd64 i386
+Priority: optional
+Depends: gcc-6-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}, ${misc:Depends}
+Replaces: libx32go3, libx32go8
+Description: Runtime library for GNU Go applications (x32)
+ Library needed for GNU Go applications linked against the
+ shared library.
+
+Package: libx32go9-dbg
+Section: debug
+Architecture: amd64 i386
+Priority: extra
+Depends: gcc-6-base (= ${gcc:Version}), libx32go9 (= ${gcc:Version}), ${misc:Depends}
+Description: Runtime library for GNU Go applications (x32 debug symbols)
+ Library needed for GNU Go applications linked against the
+ shared library. This currently is an empty package, because the
+ library is completely unstripped.
+
+#Package: gcc`'PV-soft-float
+#Architecture: arm armel armhf
+#Priority: PRI(optional)
+#Depends: BASEDEP, depifenabled(`cdev',`gcc`'PV (= ${gcc:Version}),') ${shlibs:Depends}, ${misc:Depends}
+#Conflicts: gcc-4.4-soft-float, gcc-4.5-soft-float, gcc-4.6-soft-float
+#BUILT_USING`'dnl
+#Description: GCC soft-floating-point gcc libraries (ARM)
+# These are versions of basic static libraries such as libgcc.a compiled
+# with the -msoft-float option, for CPUs without a floating-point unit.
+
